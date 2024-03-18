@@ -87,6 +87,7 @@ function populateOrderData(){
     })
 }
 function addtoCart(item){
+    orderData.length = 0;
     orderData.push(item);
     populateOrderData();
     toggleSize();
@@ -120,6 +121,14 @@ function showToast() {
         toast.style.display = 'none';
     }, 3000); 
 }
+function showToastConfirm() {
+    toast.style.display = 'block';
+    toastMessage.textContent = "Order Placed! Please Wait"
+    setTimeout(() => {
+    toastMessage.textContent = "Order Placed! Please Wait"
+        toast.style.display = 'none';
+    }, 3000); 
+}
 function hideAside(){
     checkoutMenu.style.display = 'none';
 }
@@ -131,8 +140,11 @@ cartItem.addEventListener('click', function() {
     openAside();
 })
 confirmOrder.addEventListener('click', function(){
-    showToast();
+    showToastConfirm();
     hideAside();
+    orderData.length = 0;
+    const table = document.getElementById("tableData");
+    table.innerHTML = "";
 })
 
 hideAside();
