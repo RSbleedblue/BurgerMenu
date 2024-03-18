@@ -4,21 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script  src="https://kit.fontawesome.com/b3348ae33f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Burger Menu</title>
 </head>
-<body>
+<body class="bg-gray-100">
     <!-- Landing Page-->
-    <div class="w-full bgImg h-[400px] bg-lime-200">   
+    <div class=" m -10 w-full h-[1000px] flex flex-col items-center">   
         <!-- Nav Bar -->
-        <div class="p-16 w-full h-16 justify-center flex flex-col  items-center shadow-xl">
-            <img src="assets/logo.png" class="w-40 h-28">
-            <span class="font-semibold text-3xl text-lime-950">The Classic Club</span>
-        </div>
+        <div class="p-16 w-[100%] h-2 flex justify-between rounded-lg items-center">
+            <img src="assets/logo.png" class="w-28 h-28 " alt="Logo">
+            <div class="flex text-rose-900 gap-10">
+                <i class="fas fa-cart-shopping text-3xl hover:text-rose-800 hover:cursor-pointer "></i>
+                <button type="button" class="w-24 p-2 text-white bg-rose-900 hover:bg-rose-800  rounded-xl hover:shadow-xl">Sign Up</button>
+            </div>
+        </div>        
         <!-- Catchy Line -->
-        <div class="flex flex-col justify-center items-center m-10 w-100 gap-3">
-            <h1 class="font-bold text-3xl">Welcome to a taste sensation at The Classic Club</h1>
-            <h2>Indulge in a symphony of flavors: Bite into happiness with our gourmet burgers, savor the crisp perfection of our fries, and sip on pure refreshment</h2>
+        <div class="flex gap-2 w-[70%] -mt-18 items-center justify-between">
+            <div class="flex flex-col justify-center"> 
+                <h1 class="font-bold p-10 ml-20 text-3xl w-[100%] flex flex-col">
+                    <span style="font-family:cursive; color: #a21caf;" class="text-3xl">Welcome to the taste sensation</span>  
+                    <span style="color: #be123c;">The Classic Club</span>
+                </h1>
+                <div class="flex flex-row ml-28 gap-2">
+                    <button type="button" class="w-24 p-2 text-white bg-rose-900 hover:bg-rose-800  rounded-xl hover:shadow-xl">
+                        View Menu
+                    </button>
+                    <button type="button" class=" w-24 text-black bg-gray-200 hover:bg-blue-800 hover:bg-gray-100 hover:text-black rounded-xl hover:shadow-xl rounded-xl">Order</button>
+                </div>
+            </div>
+            <img src="assets/bgMenu.png" class="w-[400px] h-[400px]">
+        </div>
+        <!-- Dishes -->
+        <h1 class="text-3xl font-semibold" style="color: #be123c;">Popular Burgers </h1>
+        <div class="w-full h-40 m-2 p-2 border border-solid border-black" >
+
         </div>
     </div>
 </body>
