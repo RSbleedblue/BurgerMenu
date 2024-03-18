@@ -74,7 +74,6 @@ fries.forEach(friesItem => {
 drinks.forEach(drinkItem => {
     populateData(drinkItem, drinksContainer);
 });
-
 function toggleSize() {
     const orderSize = orderData.length;
     orders.textContent = orderSize.toString();
@@ -94,6 +93,10 @@ function showToast() {
         toast.style.display = 'none';
     }, 3000); 
 }
+
+cartItem.addEventListener('click', function() {
+    openModal();
+})
 toggleSize();
 turnOffToast();
 
