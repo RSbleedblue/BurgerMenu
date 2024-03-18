@@ -3,7 +3,10 @@ const friesContainer = document.querySelector(".fries-container");
 const drinksContainer = document.querySelector(".drinks-container"); 
 const cartItem = document.getElementById("cart");
 const orders = document.getElementById("orderSize");
+const checkoutMenu = document.getElementById("checkoutMenu");
 const toast = document.getElementById('toast-success');
+const confirmOrder = document.getElementById('confirmOrder');
+const toastMessage = document.getElementById('toastMessage');
 const orderData = [];
 
 function populateData(item, container) {
@@ -60,8 +63,32 @@ function populateData(item, container) {
 
     container.appendChild(itemDiv);
 }
+function populateOrderData(){
+    const table = document.getElementById("tableData");
+    orderData.forEach(orderItem=>{
+        const row =  document.createElement("tr");
+        row.className = "bg-white dark:bg-rose-800";
+        const name = document.createElement("th");
+        name.className = "px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white";
+        name.textContent = orderItem.name;
+        row.appendChild(name);
+
+        const type = document.createElement("th");
+        type.className = "px-6 py-4 text-white ";
+        type.textContent = orderItem.type;
+        row.appendChild(type);
+
+        const price = document.createElement("th");
+        price.className = "px-6 py-4 text-white";
+        price.textContent = "$"+orderItem.price;
+        row.appendChild(price);
+        
+        table.appendChild(row);
+    })
+}
 function addtoCart(item){
     orderData.push(item);
+    populateOrderData();
     toggleSize();
     console.log(orderData);
 }
@@ -93,10 +120,22 @@ function showToast() {
         toast.style.display = 'none';
     }, 3000); 
 }
+function hideAside(){
+    checkoutMenu.style.display = 'none';
+}
+function openAside(){
+    checkoutMenu.style.display = 'block';
+}
 
 cartItem.addEventListener('click', function() {
-    openModal();
+    openAside();
 })
+confirmOrder.addEventListener('click', function(){
+    showToast();
+    hideAside();
+})
+
+hideAside();
 toggleSize();
 turnOffToast();
 
