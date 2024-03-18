@@ -1,6 +1,10 @@
 const burgerContainer = document.querySelector(".burger-container");
 const friesContainer = document.querySelector(".fries-container"); 
 const drinksContainer = document.querySelector(".drinks-container"); 
+const cartItem = document.getElementById("cart");
+const orders = document.getElementById("orderSize");
+const toast = document.getElementById('toast-success');
+const orderData = [];
 
 function populateData(item, container) {
     const itemDiv = document.createElement("div");
@@ -42,9 +46,10 @@ function populateData(item, container) {
     orderButton.type = "button";
     orderButton.className = "w-24 text-black bg-rose-200  hover:bg-rose-300 hover:text-white rounded-lg hover:shadow-xl rounded-xl";
     orderButton.textContent = "Order";
-
+    orderButton.addEventListener('click',function(){
+        addtoCart(item);
+    })
     buttonDiv.appendChild(orderButton);
-
     const cancelButton = document.createElement("button");
     cancelButton.type = "button";
     cancelButton.className = "w-24 text-black bg-gray-200 hover:bg-gray-100 hover:text-black rounded-lg hover:shadow-xl rounded-xl";
@@ -54,6 +59,11 @@ function populateData(item, container) {
     itemDiv.appendChild(buttonDiv);
 
     container.appendChild(itemDiv);
+}
+function addtoCart(item){
+    orderData.push(item);
+    toggleSize();
+    console.log(orderData);
 }
 burger.forEach(burgerItem => {
     populateData(burgerItem, burgerContainer);
@@ -65,7 +75,26 @@ drinks.forEach(drinkItem => {
     populateData(drinkItem, drinksContainer);
 });
 
-document.getElementById("viewMenu").addEventListener("click", function() {
-    const burgerSection = document.getElementById("burger-container");
-    burgerSection.scrollIntoView({ behavior: 'smooth' });
-});
+function toggleSize() {
+    const orderSize = orderData.length;
+    orders.textContent = orderSize.toString();
+    if (orderSize > 0) {
+        orders.style.display = "block";
+        showToast();  
+    } else {
+        orders.style.display = "none"; 
+    }
+}
+function turnOffToast(){
+    toast.style.display='none';
+}
+function showToast() {
+    toast.style.display = 'block';
+    setTimeout(() => {
+        toast.style.display = 'none';
+    }, 3000); 
+}
+toggleSize();
+turnOffToast();
+
+
